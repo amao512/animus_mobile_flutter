@@ -1,6 +1,6 @@
 # animus_mobile_flutter
 
-# Sample App для alabs_flutter_core (https://github.com/azimutlabsmobile/alabsFlutterCore/)
+<p>Sample App для alabs_flutter_core - https://github.com/azimutlabsmobile/alabsFlutterCore</p>
 
 # Начало работы
 
