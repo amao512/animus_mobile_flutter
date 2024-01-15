@@ -101,32 +101,36 @@ class _AnimeDetailsState extends CoreWidgetState<AnimeDetailsScreen> {
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 15),
-          InkWell(
-            onTap: () {
-              context.push(RoutePath.player, extra: anime.trailer.youtubeId);
-            },
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(
-                vertical: 9,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: AppColors.primary,
-              ),
-              child: const Align(
-                alignment: Alignment.center,
-                child: Text(
-                  "Play",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
+          _playButton(anime),
+        ],
+      ),
+    );
+  }
+
+  Widget _playButton(AnimeDvo anime) {
+    return InkWell(
+      onTap: () {
+        context.push(RoutePath.player, extra: anime.trailer.youtubeId);
+      },
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(
+          vertical: 9,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: AppColors.primary,
+        ),
+        child: const Align(
+          alignment: Alignment.center,
+          child: Text(
+            "Play",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
             ),
           ),
-        ],
+        ),
       ),
     );
   }
