@@ -1,16 +1,41 @@
 # animus_mobile_flutter
 
-A new Flutter project.
+# Sample App для alabs_flutter_core (https://github.com/azimutlabsmobile/alabsFlutterCore/)
 
-## Getting Started
+# Начало работы
 
-This project is a starting point for a Flutter application.
+<h2>Предварительные требования</h2>
 
-A few resources to get you started if this is your first Flutter project:
+<p>Установка Flutter SDK</p>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<h4>Для запуска проекта используйте команды</h4>
+<p>1. flutter pub get - для установки необходимых пакетов</p>
+<p>2. dart run build_runner build - генерируем файлы api сервисов и json моделок и graphql scheme (пакет retrofit, json_serializable, graphql_codegen)</p>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h4>Варианты запуска</h4>
+
+<p>1. dev - flutter run --debug</p>
+<p>2. profile - flutter run --profile</p>
+<p>3. release - flutter run --release</p>
+
+<p>debug - сборка с логгером</p>
+
+# Структура проекта
+
+<h4>Проект содержит 4 слоя, 1 core-cлой</h4>
+ <p>1. data - Слой данных отвечает за взаимодействие с внешними источниками данных (например, веб-сервисы, локальное хранилище). Здесь используются retrofit и dio для сетевых запросов и json_serializable для сериализации данных</p>
+ <p>2. domain - Слой домена содержит бизнес-логику приложения. Он действует как мост между слоем данных и слоем представления</p>
+ <p>3. presentation - Слой представления отвечает за отображение данных пользователю и обработку пользовательского ввода</p>
+ <p>4. di - Используется для обеспечения гибкой и эффективной связи между различными компонентами приложения. Это помогает в управлении зависимостями и улучшении тестируемости кода. Используется пакет get_it</p>
+
+<h4>Базовые классы</h4>
+<p>BaseState - базовый стейт для bloc</p>
+<p>BaseCubit - представляет собой обобщенный менеджер состояний для приложения Flutter, использующий паттерн Cubit из пакета bloc. Он управляет состоянием при помощи класса SimpleBaseState<T></p>
+
+<h4>CoreBlocConsumer/CoreBlocListener/CoreBlocBuilder</h4>
+<p>Принимает различные параметры для настройки поведения виджета:</p>
+<p>showError: Если true, отображает ошибку при получении состояния ошибки.</p>
+<p>showLoader: Если true, отображает индикатор загрузки при состоянии загрузки.</p>
+<p>showMainError: Если true, отображает главное сообщение об ошибке при состоянии ошибки.</p>
+<p>listener: Функция, вызываемая каждый раз при изменении состояния.</p>
+<p>builder: Функция для построения виджета на основе текущего состояния.</p>

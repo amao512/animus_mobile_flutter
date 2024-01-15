@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AnimeDetailsScreen extends StatefulWidget {
-  AnimeDetailsScreen({super.key, required this.animeId});
+  const AnimeDetailsScreen({super.key, required this.animeId});
 
   final int animeId;
 
@@ -37,6 +37,7 @@ class _AnimeDetailsState extends CoreWidgetState<AnimeDetailsScreen> {
       child: Scaffold(
         appBar: AppBar(),
         body: CoreBlocConsumer<AnimeDetailsCubit, BaseState<AnimeDvo>>(
+          showLoader: true,
           builder: (context, state) {
             if (state.isLoaded()) {
               return _body(state.result!);

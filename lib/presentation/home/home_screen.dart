@@ -38,6 +38,10 @@ class _HomeState extends CoreWidgetState<HomeScreen> {
         body: SafeArea(
           child: CoreBlocConsumer<HomeCubit, BaseState<HomeState>>(
             builder: (context, state) {
+              if (state.isLoading()) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
               if (state.isLoaded()) {
                 return _body(state.result!);
               }
