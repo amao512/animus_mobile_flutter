@@ -76,30 +76,43 @@ class _HomeState extends CoreWidgetState<HomeScreen> {
             .map(
               (e) => Stack(
                 children: [
-                  NetworkImageWidget(
-                    url: e.images.jpg.largeImageUrl,
-                    height: 600,
-                    width: double.infinity,
-                    fit: BoxFit.contain,
+                  InkWell(
+                    onTap: () {
+                      context.push(RoutePath.details, extra: e.id);
+                    },
+                    child: NetworkImageWidget(
+                      url: e.images.jpg.largeImageUrl,
+                      height: 600,
+                      width: double.infinity,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 40),
                     child: Align(
                       alignment: Alignment.bottomCenter,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 9,
-                          horizontal: 40,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColors.primary,
-                        ),
-                        child: const Text(
-                          "Play",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
+                      child: InkWell(
+                        onTap: () {
+                          context.push(
+                            RoutePath.player,
+                            extra: e.trailer.youtubeId,
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 9,
+                            horizontal: 40,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: AppColors.primary,
+                          ),
+                          child: const Text(
+                            "Play",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ),
